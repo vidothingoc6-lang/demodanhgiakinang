@@ -1,0 +1,686 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Hồ Sơ Kỹ Năng Lõi</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: cột trái chọn khối, lớp, học sinh; cột phải là hồ sơ (xếp dọc trên điện thoại). */
+:root{
+  --bg:#F2F5F4; --surface:#FFFFFF; --ink:#12282A; --muted:#5B6E6F; --line:#D5DEDC;
+  --accent:#0E7A70; --accent-ink:#FFFFFF; --accent-soft:#D9EFEB;
+  --warn:#9A5208; --warn-soft:#FBE9D2;
+  --l1:#B5402E; --l2:#B77A0C; --l3:#0E7A70; --l4:#2F5BB7;
+  --s1:#0E7A70; --s2:#C98A10; --s3:#7A5BB5; --s4:#6B7B7C;
+  --font:"Be Vietnam Pro",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0F1D1F; --surface:#162628; --ink:#E4EFEE; --muted:#93A9A9; --line:#2A3F41;
+    --accent:#4FC3B5; --accent-ink:#082220; --accent-soft:#1B3B3A;
+    --warn:#E7A455; --warn-soft:#3A2A14;
+    --l1:#EE7C69; --l2:#E2AB45; --l3:#4FC3B5; --l4:#7FA3F0;
+    --s1:#4FC3B5; --s2:#E2AB45; --s3:#B79AEA; --s4:#9BB0B0;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0F1D1F; --surface:#162628; --ink:#E4EFEE; --muted:#93A9A9; --line:#2A3F41;
+  --accent:#4FC3B5; --accent-ink:#082220; --accent-soft:#1B3B3A;
+  --warn:#E7A455; --warn-soft:#3A2A14;
+  --l1:#EE7C69; --l2:#E2AB45; --l3:#4FC3B5; --l4:#7FA3F0;
+  --s1:#4FC3B5; --s2:#E2AB45; --s3:#B79AEA; --s4:#9BB0B0;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--font);font-size:15px;line-height:1.55;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:20px 48px}
+.wrap{max-width:1220px;margin:0 auto;display:flex;flex-direction:column;gap:18px}
+h1,h2,h3{margin:0;line-height:1.25;text-wrap:balance}
+button,select{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.mono{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+
+.top{display:flex;flex-wrap:wrap;gap:12px 24px;align-items:flex-end;justify-content:space-between;border-bottom:2px solid var(--ink);padding-bottom:14px}
+.top h1{font-size:28px;font-weight:700;letter-spacing:-.01em}
+.top p{margin:4px 0 0;color:var(--muted);max-width:60ch}
+.top .meta{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.pill{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);border-radius:999px;padding:3px 10px;font-size:12.5px;background:var(--surface);white-space:nowrap}
+.pill.ok{border-color:var(--accent);color:var(--accent);background:var(--accent-soft)}
+.pill.warn{border-color:var(--warn);color:var(--warn);background:var(--warn-soft)}
+
+.grid{display:grid;grid-template-columns:350px minmax(0,1fr);gap:18px;align-items:start}
+@media (max-width:900px){.grid{grid-template-columns:minmax(0,1fr)}}
+
+.side{background:var(--surface);border:1px solid var(--line);border-radius:6px;display:flex;flex-direction:column;min-width:0}
+.sec{padding:12px 14px;border-bottom:1px solid var(--line);display:flex;flex-direction:column;gap:8px}
+.sec:last-child{border-bottom:0}
+.side input[type=search]{width:100%;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:4px;padding:8px 10px;font:inherit}
+.khoi{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px}
+.khoi button{background:var(--bg);border:1px solid var(--line);border-radius:4px;padding:8px 2px;display:flex;flex-direction:column;align-items:center;gap:1px;line-height:1.2}
+.khoi b{font-size:15px;font-weight:700}
+.khoi span{font-family:var(--mono);font-size:10.5px;color:var(--muted)}
+.khoi button[aria-pressed=true]{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.khoi button[aria-pressed=true] span{color:var(--accent-ink);opacity:.85}
+.chips{display:grid;grid-template-columns:repeat(auto-fill,minmax(100px,1fr));gap:6px}
+.chips button{background:var(--bg);border:1px solid var(--line);border-radius:4px;padding:7px 9px;text-align:left;display:flex;flex-direction:column;gap:3px;min-width:0}
+.chips b{font-weight:600;font-size:14px;overflow-wrap:anywhere}
+.chips span{font-size:11.5px;color:var(--muted)}
+.chips button[aria-pressed=true]{border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent);background:var(--accent-soft)}
+.mini{height:3px;background:var(--line);border-radius:2px;overflow:hidden}
+.mini i{display:block;height:100%;background:var(--accent)}
+.list{display:flex;flex-direction:column;margin:0;padding:0;list-style:none;max-height:440px;overflow-y:auto;border:1px solid var(--line);border-radius:4px}
+.list button{width:100%;text-align:left;background:none;border:0;border-bottom:1px solid var(--line);padding:8px 10px;display:flex;gap:8px;align-items:center;justify-content:space-between}
+.list li:last-child button{border-bottom:0}
+.list button[aria-current=true]{background:var(--accent-soft);box-shadow:inset 3px 0 0 var(--accent)}
+.list .nm{font-weight:500;min-width:0;overflow-wrap:anywhere}
+.list .st{font-size:11.5px;color:var(--muted);white-space:nowrap}
+.list .st.ok{color:var(--accent);font-weight:600}
+.list .st.warn{color:var(--warn);font-weight:600}
+.fine{font-size:12.5px;color:var(--muted)}
+
+.main{background:var(--surface);border:1px solid var(--line);border-radius:6px;min-width:0}
+.head{padding:18px 20px 0;display:flex;flex-direction:column;gap:10px}
+.head h2{font-size:22px;font-weight:700}
+.facts{display:flex;flex-wrap:wrap;gap:6px 18px;align-items:center;color:var(--muted);font-size:13.5px}
+.facts b{color:var(--ink);font-weight:500}
+.tabs{display:flex;gap:2px;margin-top:6px;border-bottom:1px solid var(--line);overflow-x:auto}
+.tabs button{background:none;border:0;padding:10px 14px;border-bottom:3px solid transparent;margin-bottom:-1px;color:var(--muted);font-weight:500;white-space:nowrap}
+.tabs button[aria-selected=true]{color:var(--ink);border-bottom-color:var(--accent);font-weight:600}
+.pane{padding:18px 20px 24px;display:flex;flex-direction:column;gap:20px;min-width:0}
+.empty{padding:48px 20px;text-align:center;color:var(--muted)}
+
+.bar{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;justify-content:space-between}
+.btn{border:1px solid var(--line);background:var(--surface);border-radius:4px;padding:7px 14px;font-weight:500}
+.btn:hover{border-color:var(--accent)}
+.btn.primary{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.btn[disabled]{opacity:.5;cursor:not-allowed}
+select{border:1px solid var(--line);background:var(--bg);border-radius:4px;padding:6px 10px;max-width:100%}
+.progress{display:flex;align-items:center;gap:10px;min-width:200px;flex:1}
+.track{flex:1;height:6px;background:var(--line);border-radius:3px;overflow:hidden}
+.track i{display:block;height:100%;background:var(--accent)}
+.legend{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:12.5px;color:var(--muted)}
+.legend span::before{content:"";display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px;background:currentColor;vertical-align:-1px}
+.lg1::before{color:var(--l1)}.lg2::before{color:var(--l2)}.lg3::before{color:var(--l3)}.lg4::before{color:var(--l4)}
+
+.skill{border-top:1px solid var(--line);padding-top:14px;display:flex;flex-direction:column;gap:10px}
+.skill h3{font-size:16px;font-weight:600;display:flex;gap:10px;align-items:baseline;justify-content:space-between;flex-wrap:wrap}
+.skill h3 .avg{font-family:var(--mono);font-size:12px;color:var(--muted);font-weight:400}
+.ind{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 16px;align-items:center}
+@media (max-width:620px){.ind{grid-template-columns:minmax(0,1fr)}}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:4px;overflow:hidden}
+.seg button{background:var(--surface);border:0;border-right:1px solid var(--line);width:40px;height:34px;font-family:var(--mono);font-size:13px;color:var(--muted)}
+.seg button:last-child{border-right:0}
+.seg button[aria-pressed=true]{color:#fff;font-weight:600}
+.seg button[data-v="1"][aria-pressed=true]{background:var(--l1)}
+.seg button[data-v="2"][aria-pressed=true]{background:var(--l2)}
+.seg button[data-v="3"][aria-pressed=true]{background:var(--l3)}
+.seg button[data-v="4"][aria-pressed=true]{background:var(--l4)}
+:root[data-theme="dark"] .seg button[aria-pressed=true]{color:#0B1516}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .seg button[aria-pressed=true]{color:#0B1516}}
+.seg button[disabled]{cursor:not-allowed}
+textarea{width:100%;min-height:64px;resize:vertical;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:4px;padding:8px 10px;font:inherit;font-size:14px}
+label.f{display:flex;flex-direction:column;gap:6px;font-size:13px;color:var(--muted)}
+.two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+@media (max-width:720px){.two{grid-template-columns:minmax(0,1fr)}}
+
+.chartrow{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:20px;align-items:start}
+@media (max-width:820px){.chartrow{grid-template-columns:minmax(0,1fr)}}
+svg text{fill:var(--ink);font-family:var(--font)}
+.radar{width:100%;height:auto;max-width:480px;margin:0 auto;display:block}
+.chk{display:flex;flex-wrap:wrap;gap:6px 14px}
+.chk label{display:inline-flex;gap:6px;align-items:center;font-size:13px}
+.sw{width:10px;height:10px;border-radius:50%;display:inline-block}
+.cols{display:flex;gap:8px;align-items:flex-end;height:150px;padding-top:18px}
+.col{flex:1;min-width:0;display:flex;flex-direction:column;align-items:center;gap:4px;height:100%;justify-content:flex-end}
+.col .v{font-family:var(--mono);font-size:11px}
+.col i{display:block;width:100%;background:var(--s4);border-radius:2px 2px 0 0;opacity:.55}
+.col.cur i{background:var(--accent);opacity:1}
+.col .l{font-size:10.5px;color:var(--muted);text-align:center;line-height:1.25}
+.tblwrap{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:13.5px}
+th,td{text-align:left;padding:7px 10px;border-bottom:1px solid var(--line);white-space:nowrap}
+th{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:400}
+td.n{font-variant-numeric:tabular-nums;font-family:var(--mono)}
+.up{color:var(--l3)}.down{color:var(--l1)}.flat{color:var(--muted)}
+
+.years{display:flex;flex-direction:column}
+.yr{display:grid;grid-template-columns:130px minmax(0,1fr);gap:6px 18px;padding:16px 0;border-top:1px solid var(--line)}
+@media (max-width:620px){.yr{grid-template-columns:minmax(0,1fr)}}
+.yr .y{font-weight:700;font-size:17px}
+.yr .body{display:flex;flex-direction:column;gap:8px;min-width:0}
+.tags{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.log{display:flex;flex-direction:column;gap:6px;font-size:13px;margin:0;padding:0;list-style:none}
+.log li{display:grid;grid-template-columns:150px minmax(0,1fr);gap:10px}
+@media (max-width:620px){.log li{grid-template-columns:minmax(0,1fr);gap:0}}
+.log time{font-family:var(--mono);font-size:11.5px;color:var(--muted)}
+.callout{background:var(--accent-soft);border-radius:4px;padding:10px 14px;font-size:13.5px}
+.expb{display:flex;flex-wrap:wrap;gap:6px}
+.cmt{min-height:180px;font-size:15px;line-height:1.6}
+</style>
+
+<div class="wrap">
+  <div class="top">
+    <div>
+      <div class="mono">SEL &amp; Life Education · Tiểu học, lớp 1–5</div>
+      <h1>Hồ Sơ Kỹ Năng Lõi</h1>
+      <p>Chọn khối, chọn lớp, chọn học sinh để đánh giá. Mỗi kỳ là một bản ghi riêng, dùng làm mốc so sánh và bàn giao.</p>
+    </div>
+    <div class="meta">
+      <span class="pill">Năm học 2026–2027</span>
+      <span class="pill" id="sync"></span>
+      <span class="pill" id="total"></span>
+    </div>
+  </div>
+
+  <div class="grid">
+    <aside class="side" aria-label="Chọn khối, lớp, học sinh">
+      <div class="sec"><input type="search" id="q" placeholder="Tìm học sinh theo tên (cả trường)" aria-label="Tìm học sinh theo tên"></div>
+      <div class="sec"><div class="mono">Khối</div><div class="khoi" id="khoi"></div></div>
+      <div class="sec"><div class="mono" id="lopT">Lớp</div><div class="chips" id="chips"></div></div>
+      <div class="sec"><div class="mono" id="listT">Học sinh</div><ul class="list" id="list"></ul></div>
+      <div class="sec" id="exp"></div>
+      <div class="sec">
+        <div class="fine" id="note">Dữ liệu bạn nhập chỉ lưu trên trình duyệt này.</div>
+        <div id="resetw"><button class="btn" id="reset" type="button">Xóa các đánh giá đã nhập</button></div>
+      </div>
+    </aside>
+    <section class="main" id="main" aria-live="polite"></section>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<script>
+(function(){
+"use strict";
+var DATA={"1/1 MASTERY":[["Thái Bình Tuệ An",1],["Hồ Huy Anh",2],["Lâm Thanh Anh",3],["Trần Minh Thiên Bảo",4],["Nguyễn Diệp Chi",5],["Nguyễn Ngọc An Di",6],["Đào Đào",7],["Huỳnh Thiên Đăng",8],["Lê Hoàng Gia Hưng",9],["Đặng Bảo Khôi",10],["Võ Tuấn Kiệt",11],["Võ An Tú Linh",12],["Trần Hào Nam",13],["Nguyễn Xuân Nhã",14],["Nguyễn An Nhiên",15],["Nguyễn Phạm Mộc Nhiên",16],["Lương Gia Phát",17],["Phạm Minh Quân",18],["Phan Hữu Tân",19],["Lương Hữu Tín",20],["Lê An Tôn",21],["Tô Thiện Trung",22],["Đỗ Ngọc Lan Vi",23],["Hoàng Hạ Vi",24],["Mai Minh Việt",25],["Đỗ Chí Vỹ",26]],"1/2":[["Lê Đức Bảo An",1],["Nguyễn Ngọc Bảo Anh",2],["Trần Duy Anh",3],["Trần Hà Anh",4],["Nguyễn Thiện Bảo",5],["Lê Huỳnh Quỳnh Chi",6],["Nguyễn Tùng Chi",7],["Đinh Hoàng Dương",8],["Hoàng Thảo Đan",9],["Lê Cát Đan Đan",10],["Trần Vĩnh Huy",11],["Hồ Tấn Hưng",12],["Đặng Nguyên Khoa",13],["Ngô Đăng Khoa",14],["Trần Trung Kiên",15],["Nguyễn Hữu Hoàng Long",16],["Trương Phạm Yên Mây",17],["Nguyễn Lê Ngân My",18],["Lê Huyền Nhi",19],["Lưu Võ Anh Quân",20],["Đào Vy Uyên",21],["Lê Hoàng Như Ý",22]],"1/3":[["Nguyễn Ngọc Thuỳ Anh",1],["Nguyễn Quỳnh Anh",2],["Lê Ngọc Bảo Châu",3],["Ngô Ngọc Minh Châu",4],["Tưởng Trọng Hoàng",5],["Phan Gia Huy",6],["Nguyễn Minh Khang",7],["Dương Sỹ Gia Khiêm",8],["Nguyễn Tiến Đăng Khoa",9],["Nguyễn Trần Tiến Khoa",10],["Lê Anh Khôi",11],["Nguyễn Đắc Hoàng Khôi",12],["Trần Lê Minh Kiệt",13],["Nguyễn Lê Tường My",14],["Nguyễn Khả Ngân",15],["Trần Minh Nhật",16],["Lê Thiệu Phong",17],["Ngô Kỳ Phong",18],["Nguyễn Hoàng Quân",19],["Nguyễn Hoàng Anh Thy",20],["Nguyễn Đức Minh Trí",21],["Lê Nguyễn Minh Vy",22]],"2/1":[["Nguyễn Hạ An",1],["Salvatori Mia Hoài An",2],["Đặng Minh Anh",3],["Nguyễn Văn Mai Anh",4],["Nguyễn Hoàng Bách",5],["Lê Thanh Bình",6],["Lê Minh Hà",7],["Lê Ngọc Hân",8],["Nguyễn Đình Hoàng",9],["Nguyễn Hữu Huy Hoàng",10],["Hồ Tấn Hưng",11],["Lê Anh Khoa",12],["Vũ Trần Minh Khoa",13],["Đặng Ngọc Minh Khuê",14],["Bùi Tấn Linh Lam",15],["Nguyễn Hoàng Lâm",16],["Phạm Nguyễn Gia Linh",17],["Trần Hùng Long",18],["Lê Nguyễn Tuệ Minh",19],["Nguyễn Công Minh",20],["Nguyễn Ngọc Thảo Nhi",21],["Phạm Hoàng Nhi",22],["Nguyễn Hồng Kim Phúc",23],["Trương Lê Bảo Thiên",24],["Nguyễn Tú Uyên",25],["Nguyễn Tuệ Lâm",26]],"2/2":[["Nguyễn Hùng Trường An",1],["Nguyễn Mạnh An",2],["Phan Đăng Anh",3],["Phạm Xuân Bách",4],["Trần Nam Bình",5],["Edwards Nguyen Cody",6],["Đỗ Thành Công",7],["Tán Trương Từ Dĩnh",8],["Phan Nhật Khang",9],["Lê Minh Khôi",10],["Phạm Đăng Khôi",11],["Cao Nguyễn Lan Khuê",12],["Huỳnh Thanh Lam",13],["Nguyễn Hoàng Lâm",14],["Ngô Nhã Linh",15],["Nguyễn Tuệ Mi",16],["Nguyễn Trần Hà My",17],["Văn Hoàng Nam",18],["Nguyễn Tuệ Nghi",19],["Đậu Thảo Nhi",20],["Huỳnh Tuệ Nhi",21],["Võ Đặng Yến Nhi",22],["Tô Xuân Phúc",23],["Nguyễn Thị Thanh Phượng",24],["Nguyễn Hoàng Anh Quân",25],["Nguyễn Sỹ Quang Tùng",26],["Nguyễn Ngọc Bảo Uyên",27]],"2/3":[["Haga Taka Aki",1],["Trần Ngọc Bảo An",2],["Phạm Văn Bình",3],["Ngô Lê Thảo Chi",4],["Phan Hoàng Quỳnh Chi",5],["Nguyễn Khải Duy",6],["Nguyễn Gia Huy",7],["Trần Gia Hy",8],["Nguyễn Bảo Khang",9],["Huỳnh Ngọc Đăng Khoa",10],["Nguyễn Chu Đăng Khoa",11],["Lê Tuấn Khôi",12],["Mai Trung Kiên",13],["Võ Giai Kỳ",14],["Trương Phạm Yên Mai",15],["Nguyễn Huỳnh Na Mi",16],["Trần Khắc Nguyên",17],["Trần Diệu Nhi",18],["Huỳnh Phạm Thế Quân",19],["Hồ Nguyễn Anh Quốc",20],["Lê Vũ Khánh Quỳnh",21],["Choe E Ram",22],["Trần An Thy",23],["Đinh Tống Tiểu Trân",24],["Phan Minh Trí",25],["Trần Anh Trung",26],["Nguyễn Lê Bảo Vy",27],["Ngô Phan Ngọc Diệp",28]],"3/1":[["Nguyễn Lan Anh",1],["Nguyễn Phương Anh",2],["Nguyễn Ngọc Bách",3],["Nguyễn Hoàng Bảo Châu",4],["Nguyễn Trần Trúc Chi",5],["Phạm Hải Đăng",6],["Nguyễn Ngọc Trà Giang",7],["Phạm Minh Huy",8],["Đào Hữu Minh Khang",9],["Lê Doãn Duy Khoa",10],["Phạm Nguyễn Bảo Khôi",11],["Lê Hoàng Quý Khương",12],["Lương Hoàng Mỹ Kim",13],["Nguyễn Hải Minh",14],["Trần Minh Nhật",15],["Bùi Tấn Trọng Phước",16],["Đinh Công Gia Thịnh",17],["Huỳnh Minh Thư",18],["Nguyễn Hồng Vy",19],["Nguyễn Trần Thục Vy",20],["Đào Diệu Yên",21]],"3/2":[["Vũ Nguyễn Tuệ An",1],["Đinh Việt Hoàng Anh",2],["Nguyễn Phúc Bảo",3],["Phạm Thị Bảo Chi",4],["Phan Quỳnh Dao",5],["Nguyễn Ngọc Thiên Di",6],["Huỳnh Kim Đạt",7],["Nguyễn Trần Vũ Hân",8],["Nguyễn Đức Huy",9],["Hồ Đắc Tiến Hưng",10],["Trần Phan Hồng Hy",11],["Nguyễn Đăng Khoa",12],["Lê Nguyên Lam Khuê",13],["Nguyễn Đức Tùng Lâm",14],["Võ Đình Phước Minh",15],["Võ Hoàng A Na",16],["Nguyễn Trần Khánh Ngân",17],["Huỳnh Thị Khánh Nguyên",18],["Lý An Nguyên",19],["Trần Tấn Phát",20],["Trịnh Thái Phúc",21],["Lê Hoàng Quân",22],["Huỳnh Bảo Thanh",23],["Lợi Tấn Thịnh",24],["Thái Ngọc Cát Tiên",25],["Huỳnh Võ Thanh Trúc",26],["Cao Gia Tuệ",27]],"3/3":[["Võ Nguyễn Duy Anh",1],["Hồ Minh Bảo Châu",2],["Phạm Ngọc Khánh Chi",3],["Phan Như Bảo Chi",4],["Hồ Cường",5],["Nguyễn Hoàng Gia",6],["Đoàn Ngọc Hân",7],["Phạm Khả Hân",8],["Dương Trung Hiếu",9],["Ngô Gia Huy",10],["Phạm Gia Huy",11],["Cao Đông Hy",12],["Trần Phan Minh Hy",13],["Nguyễn Xuân Khuê",14],["Nguyễn Đình Lâm",15],["Nguyễn Cát Khánh Linh",16],["Võ Hoàng Đan Miên",17],["Nguyễn Hồng Minh",18],["Trần Đại Quang Minh",19],["Nguyễn Khả My",20],["Trương Thành Nam",21],["Lê Khánh Nguyên",22],["Sato Nguyên",23],["Mai Phạm Gia Phú",24],["Hoàng Nguyễn Hà Phương",25],["Cù Duy Thiện",26]],"4/1":[["Đỗ Lâm Anh",1],["Nguyễn Trần Minh Anh",2],["Trần Thủy Bình",3],["Phạm Hoàng Khánh Chi",4],["Đào Cao Danh",5],["Trần Ngọc Diệp",6],["Nguyễn Minh Đăng",7],["Lê Võ Khánh Hân",8],["Nguyễn Phương Bảo Hân",9],["Nguyễn Trần Gia Hân",10],["Huỳnh Phương Khanh",11],["Dương Sỹ Đăng Khoa",12],["Phan Ngọc Minh Khuê",13],["Nguyễn Phước Lâm",14],["Nguyễn Tú Linh",15],["Thái Uy Long",16],["Nguyễn Xuân Thanh Mẫn",17],["Nguyễn Bảo Ngọc",18],["Nguyễn Hoàng Bảo Ngọc",19],["Huỳnh Linh Nhi",20],["Nguyễn Hoàng Thịnh",21],["Trần Anh Thư",22],["Nguyễn Hoàng Khánh Tiên",23],["Lê Công Thiện Trí",24],["Nguyễn Đức Trí",25],["Phan Lê Thanh Trúc",26],["Võ Nhã Uyên",27]],"4/2":[["Lê Hoài An",1],["Nguyễn Trần Bảo An",2],["Phùng Quốc Bảo",3],["Lê Trúc Hải Bình",4],["Phạm Gia Bình",5],["Lê Nguyễn Gia Hân",6],["Cao Bá Minh Khôi",7],["Mai Huỳnh Khôi",8],["Trần Ngọc Tường Lam",9],["Đặng Ngọc Kỳ Lâm",10],["Phan Trần Trung Nam",11],["Võ Hoàng Nam",12],["Nguyễn Phạm Phương Nghi",13],["Huỳnh Tuệ Nhi",20],["Bùi Tấn Linh Như",14],["Nguyễn Thế Thiên Phú",15],["Nguyễn Lê Nhã Thư",16],["Trần Bá Vũ",17],["Lê Thị Tường Vy",18],["Phan Trần Bảo Yên",19]],"4/3":[["Võ Hoài An",1],["Huỳnh Thiên Ân",2],["Hồ Kim Gia Hân",3],["Nguyễn Ngọc Gia Hân",4],["Phạm Thị Xuân Hiếu",5],["Đoàn Mạnh Hùng",6],["Võ Minh Khang",7],["Nguyễn Hoàng Mai Khuê",8],["Trần Nguyễn Khánh Linh",9],["Trần Hoàng Long",10],["Trần Nhật Minh",11],["Nguyễn Phúc Hà My",12],["Nguyễn Phan Tuệ Nghi",13],["Phan Tấn Nhân",14],["Trần Viết Minh Nhật",15],["Hồ Thiên Sơn",16],["Lưu Võ Anh Thư",17],["Phạm Minh Thư",18],["Hà Duy Minh Triết",19],["Hồ Minh Vân",20],["Trần Ngọc La Vy",21]],"5/1":[["Trần Bảo Anh",1],["Trần Hữu Minh Huy",2],["Lê Minh Khang",3],["Huỳnh Tuệ Lâm",4],["Lê Vũ Bảo Long",5],["Nguyễn Vũ Khánh Mai",6],["Nguyễn Bảo Nam",7],["Phạm Bảo Nam",8],["Huỳnh Tùng Nhân",9],["Nguyễn Cao Lạc Nhi",10],["Nguyễn Hà Tâm Như",11],["Nguyễn Minh Trí",12],["Phạm Viết Thanh Trí",13],["Lê Diệp Vy",14],["Vũ Hạ Vy",15]],"5/2":[["Lê Gia An",1],["Trương Nam Anh",2],["Lê Lý Qúy Bảo",3],["Võ Duy Hưng",4],["Vũ Hồng Gia Hưng",5],["Đỗ Trọng Nam Khang",6],["Phạm Văn Đăng Khoa",7],["Trần Hoàng Vi Khuê",8],["Trần Ngọc Diệp Khuê",9],["Đào Nhật Minh",10],["Tăng Thiện Nhân",11],["Trần Nguyễn Tuệ Nhi",12],["Huỳnh Đức Phát",13],["Châu Ngọc Thiên Phú",14],["Nguyễn Văn Minh Phúc",15],["Nguyễn Hà Minh Thiên",16],["Phạm Minh Toàn",17],["Lê Phạm Tuấn Tú",18],["Hứa Khả Vy",19]],"5/3":[["Nguyễn Ngọc Châu An",1],["Trần Lê Tuấn Anh",2],["Trần Quốc Thiên Ân",3],["Phan Hữu Đạt",4],["Hồ Hoài Đức",5],["Đào Ngọc Thanh Hằng",6],["Phan Như Bảo Hân",7],["Vũ Trần Minh Hưng",8],["Giả Khả Lam",9],["Trịnh Thái Lâm",10],["Trần Hồ Gia Minh",11],["Trần Tăng Thiên Minh",12],["Huỳnh Ngọc Khánh My",13],["Nguyễn Ngọc Ju Na",14],["Huỳnh Mẫn Nghi",15],["Đoàn Ngọc Nhân",16],["Đào Ngọc Quỳnh Như",17],["Trần Ngọc Nhã Phương",18],["Trần Ngọc Anh Thi",19],["Nguyễn Diệp Anh Thư",20],["Nguyễn Trương Minh Thư",21],["Phạm Thị Bảo Thy",22],["Phạm Minh Trí",23],["Trần Anh Tuấn",24],["Phan Đỗ Đồng Văn",25]]};
+
+/* Khung đánh giá bám kế hoạch dạy học môn SEL & Life Education 2026–2027:
+   5 năng lực SEL + năng lực "tự lập, tự tin" + phẩm chất "tôn trọng, kỉ luật".
+   Mỗi chỉ báo: [nội dung, kì bắt đầu dạy]. Kì: 0 giữa HK I, 1 cuối HK I, 2 giữa HK II, 3 cuối HK II. */
+var DIMS=[
+ {s:"Tự nhận thức",n:"Tự nhận thức"},
+ {s:"Tự quản lý",n:"Tự quản lý"},
+ {s:"Nhận thức xã hội",n:"Nhận thức xã hội"},
+ {s:"Xây dựng quan hệ",n:"Kĩ năng xây dựng mối quan hệ"},
+ {s:"Ra quyết định",n:"Kĩ năng ra quyết định"},
+ {s:"Tự lập, tự tin",n:"Năng lực: tự lập, tự tin"},
+ {s:"Tôn trọng, kỉ luật",n:"Phẩm chất: tôn trọng, kỉ luật"}
+];
+var NL=[["tự chuẩn bị và hoàn thành nhiệm vụ học tập phù hợp lứa tuổi",0],["tự tin nói, trình bày ý kiến trước lớp",0],["chủ động tham gia các hoạt động và chương trình trải nghiệm",0]];
+var PC=[["tôn trọng thầy cô và bạn bè trong lời nói, thái độ",0],["thực hiện nội quy, quy định của lớp và của trường",0],["giữ trật tự và an toàn khi tham gia hoạt động trải nghiệm",0]];
+var IND={
+1:[
+ [["nhận diện được cảm xúc của mình trong tình huống cụ thể",0],["gọi tên đúng các cảm xúc cơ bản (vui, buồn, giận, sợ)",0],["nói được sở thích và điều em sợ của mình",3]],
+ [["thực hành làm bạn với cảm xúc (nhận ra và chấp nhận cảm xúc của mình)",0],["biết “ôm cơn giận, ôm nỗi buồn” khi có cảm xúc mạnh",3],["thực hành hít thở để bình tĩnh lại",3]],
+ [["thể hiện lòng biết ơn cơ thể và thức ăn của mình",1],["nhận ra cảm xúc của người khác",2],["ứng xử phù hợp trong ngày Tết và biết ơn sức lao động",2]],
+ [["lắng nghe bạn nói (nhìn bạn, không ngắt lời)",1],["trình bày được ý của mình trước lớp",1],["thực hành thuyết trình và chia sẻ điều em thích",3]],
+ [["thực hiện đúng các bước thoát hiểm khi có hỏa hoạn",0],["biết cách thoát hiểm khi bị kẹt trên xe ô tô",1],["nhận diện vùng riêng tư và dùng quy tắc 5 ngón tay để bảo vệ bản thân",2]],
+ NL,PC],
+2:[
+ [["nhận diện và gọi tên được các cảm xúc cơ bản",0],["nói được cảm xúc của mình đến từ đâu (vui, buồn, giận, ngạc nhiên, sợ hãi, ghê tởm)",0],["nói về sở thích và ước mơ của mình",3]],
+ [["thực hành hiện diện với cảm xúc (làm bạn với cảm xúc)",0],["biết ôm nỗi buồn, lan tỏa niềm vui và hít thở để bình tĩnh",3],["biết dùng mô hình 3 chiếc lọ để quản lý tiền",2]],
+ [["thể hiện lòng biết ơn bằng lời nói, việc làm (lọ yêu thương, lời nhắn nhủ yêu thương)",1],["nhận ra cảm xúc của người khác",2],["hiểu sở thích và góc nhìn của bạn có thể khác mình",2]],
+ [["nắm các bước trình bày bài nói (mở đầu, nội dung, kết thúc)",1],["dùng dáng đứng, cử chỉ tay phù hợp khi nói",1],["thể hiện sự quan tâm và giải quyết mâu thuẫn với bạn bè",2]],
+ [["thực hiện đúng các bước thoát hiểm khi có hỏa hoạn",0],["biết cách phòng tránh bị bắt cóc",1],["biết tìm đến người lớn tin cậy khi gặp tình huống không an toàn",1]],
+ NL,PC],
+3:[
+ [["ôn lại và nhận ra cảm xúc của mình đến từ đâu",0],["nhận ra hậu quả của cơn tức giận với bản thân và người khác",0],["nói được nghề em yêu thích và lí do",3]],
+ [["thực hành tức giận đúng cách",0],["dùng được ít nhất một cách kiểm soát cơn tức giận (thang đo cơn giận, hít thở)",3],["tìm hiểu nhu cầu của bản thân và làm quen với quản lý chi tiêu",2]],
+ [["lập kế hoạch và thể hiện lòng biết ơn với thầy cô",1],["nhận ra cảm xúc của người khác trong tình huống cụ thể",2],["tôn trọng sự khác biệt và lắng nghe góc nhìn của người khác",2]],
+ [["dùng ngôn ngữ cơ thể (cử chỉ tay, ánh mắt) khi thuyết trình",1],["thực hành thuyết trình và hoàn thành sản phẩm học tập",1],["kiểm soát cảm xúc để giải quyết tình huống với bạn bè",3]],
+ [["thực hiện đúng các bước thoát hiểm khi có hỏa hoạn",0],["biết cách thoát hiểm khi bị kẹt trong thang máy",0],["bình tĩnh thực hành thoát hiểm theo hướng dẫn",0]],
+ NL,PC],
+4:[
+ [["nói được thông điệp mà mỗi cảm xúc muốn gửi đến mình",0],["nhìn một sự việc từ nhiều góc độ và nghĩ khác đi",0],["nói được về nghề nghiệp em yêu thích và vì sao",3]],
+ [["dùng thang đo cơn tức giận để nhận biết mức độ cảm xúc của mình",3],["thực hành hiện diện, hít thở, chọn nụ cười để lấy lại bình tĩnh",3],["điều hòa được cảm xúc trong tình huống với người thân và bạn bè",3]],
+ [["nhận ra điều cần biết ơn ở thiên nhiên, phương tiện, con người quanh mình",1],["thực hành biết ơn bằng hành động cụ thể",1],["tham gia tìm hiểu và chia sẻ về Đà Nẵng qua dự án và hoạt động trải nghiệm",1]],
+ [["luyện giọng nói khi thuyết trình (ngắt nghỉ, nhấn nhá)",1],["dùng ngôn ngữ cơ thể (di chuyển, cử chỉ) khi thuyết trình",1],["làm việc nhóm và giải quyết xung đột trong nhóm",2]],
+ [["biết cách thoát hiểm khi gặp tình huống nguy hiểm",0],["nhận biết và biết cách phòng tránh xâm hại thân thể, xâm hại tình dục",0],["ra quyết định chi tiêu dựa trên mối quan hệ nguyên nhân – kết quả",2]],
+ NL,PC],
+5:[
+ [["nhận ra cảm xúc của mình khi bước vào năm học mới, chuẩn bị chuyển cấp",0],["nói được điểm mạnh và điểm yếu của bản thân",0],["nói được nghề nghiệp em yêu thích và vì sao",3]],
+ [["đặt được mục tiêu cá nhân cụ thể",0],["dùng cách điều hòa cảm xúc phù hợp (hít thở, time out)",3],["đón nhận sự việc không như ý và hiểu ý nghĩa của sự tha thứ",3]],
+ [["nói được ý nghĩa của các hoạt động vì cộng đồng",1],["lập kế hoạch và tham gia hành động vì cộng đồng",1],["biết ơn người phụng sự cộng đồng và những điều không như ý",2]],
+ [["phát âm rõ, ngắt nghỉ hợp lý khi thuyết trình",1],["dùng ngôn ngữ cơ thể (dáng đứng, di chuyển) khi thuyết trình",1],["thực hành thuyết trình và chia sẻ về sản phẩm, dự án học tập",1]],
+ [["nhận diện được các biểu hiện của bạo lực học đường",0],["biết cách ứng phó khi gặp bạo lực học đường (nhờ người lớn, giữ an toàn)",0],["ra quyết định theo các bước và chịu trách nhiệm về lựa chọn",2]],
+ NL,PC]
+};
+var TOP={
+1:[["Nhận diện bản thân",0],["An toàn trong cuộc sống của em",0],["Lòng biết ơn",1],["Kĩ năng thuyết trình",1],["Chào năm mới",2],["Nói lời yêu thương",2],["Điều hòa cảm xúc",3],["Em tự tin – Em tỏa sáng",3]],
+2:[["Nhận diện bản thân",0],["An toàn trong cuộc sống của em",0],["Lòng biết ơn",1],["Kĩ năng thuyết trình",1],["Chào năm mới",2],["Những người sống quanh em",2],["Điều hòa cảm xúc",3],["Em tự tin – Em tỏa sáng",3]],
+3:[["Nhận diện bản thân",0],["An toàn trong cuộc sống của em",0],["Lòng biết ơn",1],["Kĩ năng thuyết trình",1],["Chào năm mới – Tiêu dùng thông minh",2],["Những người sống quanh em",2],["Điều hòa cảm xúc",3],["Em tự tin – Em tỏa sáng",3]],
+4:[["Nhận diện bản thân",0],["An toàn trong cuộc sống của em",0],["Lòng biết ơn",1],["Kĩ năng thuyết trình",1],["Ra quyết định – Tiêu dùng thông minh",2],["Kĩ năng phát triển bản thân",2],["Điều hòa cảm xúc",3],["Em tự tin – Em tỏa sáng",3]],
+5:[["Nhận diện và phát triển bản thân",0],["An toàn trong cuộc sống của em",0],["Hành động vì cộng đồng",1],["Kĩ năng thuyết trình",1],["Ra quyết định có trách nhiệm",2],["Lòng biết ơn",2],["Điều hòa cảm xúc",3],["Em tự tin – Em tỏa sáng",3]]
+};
+var LV=["","Cần cố gắng","Đang hình thành","Đạt","Tốt"];
+var PER=[
+ {k:"2024–25 · Cuối HK II",s:["24-25","Cuối HK II"]},
+ {k:"2025–26 · Cuối HK II",s:["25-26","Cuối HK II"]},
+ {k:"2026–27 · Giữa HK I",s:["26-27","Giữa HK I"]},
+ {k:"2026–27 · Cuối HK I",s:["26-27","Cuối HK I"]},
+ {k:"2026–27 · Giữa HK II",s:["26-27","Giữa HK II"]},
+ {k:"2026–27 · Cuối HK II",s:["26-27","Cuối HK II"]}
+];
+var YP=[[0],[1],[2,3,4,5]], YN=["2024–2025","2025–2026","2026–2027"];
+function yOf(p){return p===0?0:p===1?1:2}
+function pFrom(p){return p<2?3:p-2}
+function allowed(g,p){return p>0&&g>=3-yOf(p)}
+function gAt(s,p){return s.g-(2-yOf(p))}
+function visD(s,p,d){var f=pFrom(p);return IND[gAt(s,p)][d].map(function(x,i){return {i:i,t:x[0],ok:x[1]<=f}})}
+function totalV(s,p){var n=0;DIMS.forEach(function(_,d){visD(s,p,d).forEach(function(x){if(x.ok)n++})});return n}
+function filledV(s,p,e){var n=0;DIMS.forEach(function(_,d){visD(s,p,d).forEach(function(x){if(x.ok&&e.ratings[d][x.i]!=null)n++})});return n}
+var KEY="hskl-theo-khoi-v2";
+
+var ST=[], BYK={}, MAP={};
+Object.keys(DATA).forEach(function(lop){
+ var g=+lop.charAt(0);
+ (BYK[g]=BYK[g]||[]).push(lop);
+ DATA[lop].forEach(function(e){var o={key:lop+"#"+e[1],name:e[0],lop:lop,g:g};ST.push(o);MAP[o.key]=o});
+});
+var GS=Object.keys(BYK).map(Number).sort();
+
+function blankEv(){return {ratings:DIMS.map(function(){return [null,null,null]}),notes:DIMS.map(function(){return ""}),comment:"",goal:"",locked:false}}
+function newSt(){return {ev:{},handoff:"",consent:false,handoffMade:false,log:[]}}
+var BLANK=newSt(), BLANKEV=blankEv();
+var store=load()||{};
+function load(){try{var j=localStorage.getItem(KEY);return j?JSON.parse(j):null}catch(e){return null}}
+var DB=null, UID=null, USER=null, RO=false, NAMES={}, dirty={}, writing={}, timers={}, seen={}, synced=false, DOCKEY={};
+function docId(key){var i=key.lastIndexOf("#");return slug(key.slice(0,i))+"-"+key.slice(i+1)}
+ST.forEach(function(s){DOCKEY[docId(s.key)]=s.key});
+function cacheLocal(){try{localStorage.setItem(KEY,JSON.stringify(store))}catch(e){}}
+function save(){cacheLocal();touch(selKey)}
+function setSync(s){
+ var el=document.getElementById("sync"); if(!el) return;
+ var m={local:["","Lưu trên trình duyệt này"],loading:["","Đang kết nối kho dùng chung…"],ok:["ok","Dùng chung · đã lưu"],saving:["warn","Đang lưu…"],ro:["","Chỉ xem"],err:["warn","Chưa lưu được, đang thử lại"],offline:["warn","Chưa kết nối được, đang dùng bản trên máy này"]}[s];
+ el.className="pill "+m[0]; el.textContent=m[1];
+}
+function idle(){
+ var busy=Object.keys(dirty).some(function(k){return dirty[k]})||Object.keys(writing).some(function(k){return writing[k]});
+ setSync(RO?"ro":busy?"saving":"ok");
+}
+function touch(key){
+ if(!DB||RO||!store[key]) return;
+ dirty[key]=true; setSync("saving");
+ clearTimeout(timers[key]); timers[key]=setTimeout(function(){flush(key)},700);
+}
+function flush(key){
+ if(!DB||RO||writing[key]) return;
+ writing[key]=true; dirty[key]=false;
+ var body=JSON.parse(JSON.stringify(store[key]));
+ DB.collection("hs").doc(docId(key)).set(body).then(function(){
+  writing[key]=false; seen[key]=1;
+  if(dirty[key]) flush(key); else idle();
+ },function(err){
+  writing[key]=false; var c=err&&err.code;
+  if(c==="invalid_argument"){RO=true;setSync("ro");renderMain();toast("Bạn chỉ có quyền xem nên thay đổi chưa được lưu")}
+  else if(c==="quota_exceeded"){setSync("err");toast("Kho dữ liệu đã đầy, chưa lưu được")}
+  else{dirty[key]=true;setSync("err");clearTimeout(timers[key]);timers[key]=setTimeout(function(){flush(key)},4000)}
+ });
+}
+function hasData(st){return Object.keys(st.ev).some(function(p){return filled(st.ev[p])>0})||!!st.handoff||st.log.length>0}
+function ensureNames(ids){
+ ids=ids.filter(function(i){return i&&!(i in NAMES)});
+ if(!ids.length||!USER) return;
+ ids.forEach(function(i){NAMES[i]=""});
+ USER.profiles(ids).then(function(ps){var ch=false;ids.forEach(function(i){var n=ps[i]&&ps[i].name;if(n){NAMES[i]=n;ch=true}});if(ch&&tab==="handoff")renderMain()});
+}
+function onSnap(snap){
+ var changed=false, selChanged=false;
+ snap.docChanges().forEach(function(c){
+  var key=DOCKEY[c.doc.id]; if(!key) return;
+  if(c.type==="removed"){if(!dirty[key]&&!writing[key]&&store[key]){delete store[key];changed=true;if(key===selKey)selChanged=true}return}
+  seen[key]=1;
+  if(dirty[key]||writing[key]||c.doc.metadata.hasPendingWrites) return;
+  var data=c.doc.data(); if(!data) return;
+  store[key]=JSON.parse(JSON.stringify(data)); changed=true; if(key===selKey)selChanged=true;
+ });
+ if(!snap.metadata.fromCache&&!synced){
+  Object.keys(store).forEach(function(k){if(!seen[k]&&hasData(store[k]))touch(k)});
+ }
+ if(changed){
+  cacheLocal(); renderSide();
+  if(selChanged){var ae=document.activeElement; if(!(ae&&ae.closest&&ae.closest("#main")&&/TEXTAREA|INPUT|SELECT/.test(ae.tagName))) renderMain()}
+ }
+ if(!snap.metadata.fromCache) idle();
+}
+function S(key,w){if(!store[key]){if(!w)return BLANK;store[key]=newSt()}return store[key]}
+function EV(st,p){return st.ev[p]||BLANKEV}
+function W(){var st=S(selKey,true);if(!st.ev[ps])st.ev[ps]=blankEv();return st.ev[ps]}
+function mean(a){var b=a.filter(function(x){return x!=null});return b.length?b.reduce(function(x,y){return x+y},0)/b.length:null}
+function filled(e){var n=0;e.ratings.forEach(function(r){r.forEach(function(x){if(x!=null)n++})});return n}
+function val(st,p,d){var e=st.ev[p];return e?mean(e.ratings[d]):null}
+function overall(st,p){return mean(DIMS.map(function(_,d){return val(st,p,d)}))}
+function f1(x){return x==null?"–":x.toFixed(1).replace(".",",")}
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+function cap(s){return s.charAt(0).toUpperCase()+s.slice(1)}
+function plain(s){return s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"").replace(/đ/g,"d")}
+function slug(s){return plain(s).replace(/[^a-z0-9]+/g,"-").replace(/^-+|-+$/g,"")}
+function now(){var d=new Date(),p=function(n){return String(n).padStart(2,"0")};return p(d.getDate())+"/"+p(d.getMonth()+1)+"/"+d.getFullYear()+" "+p(d.getHours())+":"+p(d.getMinutes())}
+function logit(x){var l=S(selKey,true).log;l.unshift({t:now(),x:x,u:UID||null});if(l.length>200)l.length=200}
+function nextLabel(g){return g<5?"lớp "+(g+1):"lớp 6 (cấp THCS)"}
+
+var selG=GS[0], selLop=BYK[selG][0], selKey=null, ps=2, tab="form", picked=null, qtext="", DL=null;
+function firstOf(lop){return ST.filter(function(s){return s.lop===lop})[0]}
+selKey=firstOf(selLop).key;
+
+/* ---------- Nhận xét chung ---------- */
+function lvlPhrase(m){
+ return m>=3.5?"thể hiện tốt các năng lực SEL của chương trình":
+  m>=3?"đạt yêu cầu và thể hiện khá tốt các năng lực SEL":
+  m>=2.5?"đạt yêu cầu ở mức cơ bản, một số nội dung đang hình thành":
+  m>=2?"đang hình thành các năng lực SEL, cần thêm thời gian và sự hỗ trợ":
+  "còn gặp nhiều khó khăn ở các năng lực SEL, cần được hỗ trợ thêm";
+}
+function tenOf(name){var a=name.trim().split(/\s+/);return a[a.length-1]}
+function genComment(s,st,p){
+ var e=st.ev[p]; if(!e) return "";
+ var items=[];
+ DIMS.forEach(function(_,d){visD(s,p,d).forEach(function(x){var r=e.ratings[d][x.i];if(x.ok&&r!=null)items.push({d:d,t:x.t,r:r})})});
+ if(!items.length) return "";
+ var m=mean(items.map(function(x){return x.r})), nm=tenOf(s.name), g=gAt(s,p), f=pFrom(p);
+ var tops=TOP[g].filter(function(t){return t[1]<=f}).map(function(t){return t[0]});
+ var per=PER[p].s[1], perLow=per.charAt(0).toLowerCase()+per.slice(1), yr=YN[yOf(p)];
+ var out=[];
+ if(tops.length<=5) out.push("Qua các chủ đề "+tops.join(", ")+" ("+perLow+", năm học "+yr+"), em "+nm+" "+lvlPhrase(m)+".");
+ else out.push("Qua các chủ đề đã học đến "+perLow+" năm học "+yr+", em "+nm+" "+lvlPhrase(m)+".");
+ var good=items.filter(function(x){return x.r>=3}).sort(function(a,b){return b.r-a.r}).slice(0,3);
+ if(good.length) out.push("Em "+nm+" làm tốt các nội dung: "+good.map(function(x){return x.t}).join("; ")+".");
+ var low=items.filter(function(x){return x.r<=2}).sort(function(a,b){return a.r-b.r}).slice(0,3);
+ if(low.length){
+  var hard=low.some(function(x){return x.r===1});
+  out.push("Em "+nm+(hard?" cần được hỗ trợ thêm ở các nội dung: ":" cần tiếp tục luyện tập thêm ở các nội dung: ")+low.map(function(x){return x.t}).join("; ")+".");
+  out.push("Đề nghị gia đình cùng giáo viên động viên và đồng hành để em tiến bộ hơn.");
+ } else out.push("Em cần tiếp tục phát huy những điểm tốt này.");
+ return out.join(" ");
+}
+function commentFor(s,st,p){var e=st.ev[p];if(!e)return "";return e.cmtEdit!=null?e.cmtEdit:genComment(s,st,p)}
+
+/* ---------- Danh sách ---------- */
+function stat(key){
+ var s=MAP[key], e=EV(S(key),ps);
+ if(!allowed(s.g,ps)) return ['','–'];
+ var n=filledV(s,ps,e);
+ if(e.locked) return ['ok','Đã chốt'];
+ if(n===0) return ['','Chưa đánh giá'];
+ return ['warn',n+'/'+totalV(s,ps)];
+}
+function lopStat(lop){
+ var all=ST.filter(function(s){return s.lop===lop}),d=0;
+ all.forEach(function(s){if(EV(S(s.key),ps).locked)d++});
+ return {n:all.length,d:d};
+}
+function renderSide(){
+ document.getElementById("total").textContent=ST.length+" học sinh · "+Object.keys(DATA).length+" lớp";
+ document.getElementById("khoi").innerHTML=GS.map(function(g){
+  var c=ST.filter(function(s){return s.g===g}).length;
+  return '<button type="button" data-act="khoi" data-g="'+g+'" aria-pressed="'+(g===selG&&!qtext)+'"><b>Khối '+g+'</b><span>'+c+' HS</span></button>';
+ }).join("");
+ document.getElementById("lopT").textContent="Khối "+selG+" · "+BYK[selG].length+" lớp";
+ document.getElementById("chips").innerHTML=BYK[selG].map(function(l){
+  var x=lopStat(l);
+  return '<button type="button" data-act="lop" data-lop="'+esc(l)+'" aria-pressed="'+(l===selLop&&!qtext)+'"><b>'+esc(l)+'</b><span>'+x.d+'/'+x.n+' đã chốt</span><span class="mini"><i style="width:'+(x.n?x.d/x.n*100:0)+'%"></i></span></button>';
+ }).join("");
+ var rows, title;
+ if(qtext){var q=plain(qtext.trim());rows=ST.filter(function(s){return plain(s.name).indexOf(q)>-1}).slice(0,60);title="Kết quả tìm kiếm: "+rows.length+(rows.length===60?"+":"")+" học sinh"}
+ else{rows=ST.filter(function(s){return s.lop===selLop});title="Lớp "+selLop+" · "+rows.length+" học sinh"}
+ document.getElementById("listT").textContent=title;
+ document.getElementById("list").innerHTML=rows.map(function(s){var t=stat(s.key);
+  return '<li><button type="button" data-act="pick" data-key="'+esc(s.key)+'" aria-current="'+(s.key===selKey)+'"><span class="nm">'+esc(s.name)+(qtext?' <span class="fine">· '+esc(s.lop)+'</span>':'')+'</span><span class="st '+t[0]+'">'+t[1]+'</span></button></li>';
+ }).join("")||'<li class="fine" style="padding:10px">Không có học sinh khớp.</li>';
+ renderExp();
+}
+function renderExp(){
+ var h='<div class="mono">Xuất nhận xét · '+PER[ps].k+'</div>';
+ if(DL){
+  h+='<div class="expb"><button class="btn" type="button" data-act="expc">Lớp '+esc(selLop)+'</button><button class="btn" type="button" data-act="expk">Khối '+selG+'</button><button class="btn" type="button" data-act="expa">Cả trường</button></div>'+
+     '<div class="fine">File Excel (.xlsx) gồm điểm trung bình 7 năng lực và nhận xét chung của từng học sinh. Mỗi lớp một sheet.</div>';
+ } else {
+  h+='<div class="expb"><button class="btn" type="button" data-act="copyclass">Sao chép bảng lớp '+esc(selLop)+'</button></div>'+
+     '<div class="fine">Chế độ xem này chưa cho tải file. Sao chép rồi dán vào Excel.</div>';
+ }
+ document.getElementById("exp").innerHTML=h;
+}
+
+/* ---------- Hồ sơ ---------- */
+function renderMain(){
+ var s=MAP[selKey], st=S(selKey);
+ var opts=PER.map(function(p,i){return allowed(s.g,i)?'<option value="'+i+'"'+(i===ps?" selected":"")+'>'+p.k+'</option>':""}).join("");
+ var h='<div class="head"><div class="mono">Khối '+s.g+' · Lớp '+esc(s.lop)+'</div><h2>'+esc(s.name)+'</h2>'+
+ '<div class="facts"><label class="f" style="flex-direction:row;align-items:center;gap:8px">Kì đánh giá <select id="per" data-act="setper">'+opts+'</select></label></div>'+
+ '<div class="tabs" role="tablist">'+[["form","Phiếu đánh giá"],["progress","Tiến bộ"],["comment","Nhận xét"],["handoff","Hồ sơ kế thừa"]].map(function(t){return '<button role="tab" type="button" data-act="tab" data-tab="'+t[0]+'" aria-selected="'+(tab===t[0])+'">'+t[1]+'</button>'}).join("")+'</div></div><div class="pane">';
+ h+= tab==="form"?formHTML(s,st):tab==="progress"?progressHTML(s,st):tab==="comment"?commentHTML(s,st):handoffHTML(s,st);
+ document.getElementById("main").innerHTML=h+'</div>';
+}
+
+function formHTML(s,st){
+ var e=EV(st,ps), tot=totalV(s,ps), n=filledV(s,ps,e), dis=(e.locked||RO)?" disabled":"", rod=RO?" disabled":"", g=gAt(s,ps);
+ var h='<div class="bar"><div class="progress"><span class="mono">'+n+'/'+tot+' chỉ báo</span><div class="track"><i style="width:'+(tot?n/tot*100:0)+'%"></i></div></div>'+
+  '<div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn" type="button" data-act="draft"'+dis+'>Lưu nháp</button>'+
+  (e.locked?'<button class="btn" type="button" data-act="unlock"'+rod+'>Mở khóa để sửa</button>':'<button class="btn primary" type="button" data-act="lock"'+(n<tot||RO?" disabled":"")+'>Chốt kết quả kì này</button>')+'</div></div>';
+ h+='<div class="fine">Chỉ báo lấy từ kế hoạch dạy học môn SEL &amp; Life Education lớp '+g+', năm học 2026–2027. Mỗi kì chỉ hiện nội dung đã dạy đến thời điểm đó.</div>';
+ h+='<div class="legend"><span class="lg1">1 Cần cố gắng</span><span class="lg2">2 Đang hình thành</span><span class="lg3">3 Đạt</span><span class="lg4">4 Tốt</span></div>';
+ if(e.locked) h+='<div class="callout">Kết quả kì này đã được chốt. Mở khóa để sửa sẽ được ghi vào nhật ký chỉnh sửa.</div>';
+ DIMS.forEach(function(k,d){
+  var V=visD(s,ps,d).filter(function(x){return x.ok});
+  h+='<div class="skill"><h3><span>'+k.n+'</span><span class="avg">'+(V.length?'TB '+f1(mean(e.ratings[d])):'chưa dạy')+'</span></h3>';
+  if(!V.length){h+='<div class="fine">Nội dung này chưa dạy đến kì đang chọn.</div></div>';return}
+  V.forEach(function(x){
+   var r=e.ratings[d][x.i];
+   h+='<div class="ind"><div>'+esc(cap(x.t))+(r?' <span class="fine">· '+LV[r]+'</span>':'')+'</div><div class="seg" role="group" aria-label="Mức độ: '+esc(x.t)+'">'+
+    [1,2,3,4].map(function(v){return '<button type="button" data-act="rate" data-s="'+d+'" data-i="'+x.i+'" data-v="'+v+'" aria-pressed="'+(r===v)+'" title="'+LV[v]+'"'+dis+'>'+v+'</button>'}).join("")+'</div></div>';
+  });
+  h+='<label class="f">Minh chứng, tình huống quan sát<textarea data-note="'+d+'" placeholder="Ví dụ: trong tiết thực hành hít thở, em tự nhắc bạn cùng bàn làm theo."'+dis+'>'+esc(e.notes[d])+'</textarea></label></div>';
+ });
+ h+='<div class="two"><label class="f">Ghi chú của giáo viên<textarea data-field="comment"'+dis+'>'+esc(e.comment)+'</textarea></label>'+
+    '<label class="f">Mục tiêu và kế hoạch hỗ trợ cho kì sau<textarea data-field="goal"'+dis+'>'+esc(e.goal)+'</textarea></label></div>';
+ return h;
+}
+
+function radar(series){
+ var cx=280,cy=200,R=130,N=DIMS.length,h='<svg class="radar" viewBox="0 0 560 400" role="img" aria-label="Biểu đồ radar 7 năng lực">';
+ function pt(i,v){var a=-Math.PI/2+i*2*Math.PI/N;return [cx+Math.cos(a)*R*v/4,cy+Math.sin(a)*R*v/4]}
+ [1,2,3,4].forEach(function(l){h+='<polygon points="'+DIMS.map(function(_,i){return pt(i,l).join(",")}).join(" ")+'" fill="none" stroke="var(--line)" stroke-width="'+(l===3?1.4:1)+'"'+(l===3?' stroke-dasharray="4 3"':'')+'/>'});
+ DIMS.forEach(function(k,i){var p=pt(i,4),a=-Math.PI/2+i*2*Math.PI/N,c=Math.cos(a);
+  h+='<line x1="'+cx+'" y1="'+cy+'" x2="'+p[0]+'" y2="'+p[1]+'" stroke="var(--line)"/>';
+  h+='<text x="'+(cx+Math.cos(a)*(R+14))+'" y="'+(cy+Math.sin(a)*(R+14)+4)+'" font-size="12" text-anchor="'+(Math.abs(c)<.2?"middle":c>0?"start":"end")+'">'+k.s+'</text>'});
+ [2,3,4].forEach(function(l){h+='<text x="'+(cx+4)+'" y="'+(cy-R*l/4+3)+'" font-size="9" style="fill:var(--muted)">'+l+'</text>'});
+ series.forEach(function(s){
+  var pts=s.v.map(function(v,i){return pt(i,v==null?0:v).join(",")}).join(" ");
+  h+='<polygon points="'+pts+'" fill="'+s.c+'" fill-opacity="'+(s.top?.18:.05)+'" stroke="'+s.c+'" stroke-width="'+(s.top?2.5:1.8)+'"'+(s.dash?' stroke-dasharray="6 4"':'')+' stroke-linejoin="round"/>';
+  if(s.top) s.v.forEach(function(v,i){if(v==null)return;var p=pt(i,v);h+='<circle cx="'+p[0]+'" cy="'+p[1]+'" r="3.5" fill="'+s.c+'"/>'});
+ });
+ return h+'</svg>';
+}
+function avail(s,st){return PER.map(function(_,p){return p}).filter(function(p){return allowed(s.g,p)&&st.ev[p]&&filled(st.ev[p])>0})}
+
+function progressHTML(s,st){
+ var av=avail(s,st);
+ if(!av.length) return '<div class="empty">Chưa có đánh giá nào của em '+esc(tenOf(s.name))+'.<br>Nhập ở tab Phiếu đánh giá, biểu đồ tiến bộ sẽ hiện ở đây.</div>';
+ var pk=picked?picked.filter(function(p){return av.indexOf(p)>-1}):null;
+ if(!pk||!pk.length){
+  pk=[];var base=av.indexOf(ps)>-1?ps:av[av.length-1];pk.push(base);
+  var before=av.filter(function(p){return p<base});if(before.length)pk.push(before[before.length-1]);
+ }
+ var cols=["var(--s1)","var(--s2)","var(--s3)","var(--s4)"],dashes=[false,true,true,true];
+ var order=pk.slice().sort(function(a,b){return b-a}).slice(0,4);
+ var series=order.map(function(p,i){return {v:DIMS.map(function(_,d){return val(st,p,d)}),c:cols[i],dash:dashes[i],top:i===0}});
+ var h='<div class="chartrow"><div>'+radar(series)+'</div><div style="display:flex;flex-direction:column;gap:12px"><div class="mono">So sánh các kì (tối đa 4)</div><div class="chk">';
+ av.slice().reverse().forEach(function(p){var idx=order.indexOf(p);
+  h+='<label><input type="checkbox" data-act="per" data-p="'+p+'"'+(idx>-1?" checked":"")+'>'+(idx>-1?'<span class="sw" style="background:'+cols[idx]+'"></span>':'')+PER[p].k+'</label>'});
+ h+='</div><p class="fine" style="margin:0">Nét liền là kì gần nhất trong các kì đang chọn. Vòng nét đứt là mức 3 (Đạt). Trục nằm ở tâm nghĩa là chưa dạy hoặc chưa chấm nội dung đó.</p>';
+ h+='<div class="mono" style="margin-top:6px">Điểm trung bình các kì</div><div class="cols">'+av.map(function(p){var o=overall(st,p);
+  return '<div class="col'+(p===ps?" cur":"")+'"><span class="v">'+f1(o)+'</span><i style="height:'+((o||0)/4*100)+'%"></i><span class="l">'+PER[p].s[0]+'<br>'+PER[p].s[1]+'</span></div>'}).join("")+'</div></div></div>';
+ var prevs=av.filter(function(p){return p<ps}), prev=prevs.length?prevs[prevs.length-1]:null;
+ h+='<div><div class="mono" style="margin-bottom:6px">'+PER[ps].k+(prev!=null?' so với '+PER[prev].k:'')+'</div><div class="tblwrap"><table><thead><tr><th>Năng lực</th><th>Kì trước</th><th>Kì này</th><th>Chênh lệch</th></tr></thead><tbody>'+
+ DIMS.map(function(k,d){var a=prev!=null?val(st,prev,d):null,b=val(st,ps,d),df=(a!=null&&b!=null)?b-a:null;
+  var c=df==null?"flat":df>0.05?"up":df<-0.05?"down":"flat";
+  return '<tr><td>'+k.n+'</td><td class="n">'+f1(a)+'</td><td class="n">'+f1(b)+'</td><td class="n '+c+'">'+(df==null?"–":(df>0?"+":"")+f1(df))+'</td></tr>'}).join("")+'</tbody></table></div></div>';
+ var low=DIMS.map(function(k,d){return {k:k.n,v:val(st,ps,d)}}).filter(function(x){return x.v!=null&&x.v<2});
+ if(low.length) h+='<div class="callout" style="background:var(--warn-soft)"><b>Cần hỗ trợ thêm:</b> '+low.map(function(x){return esc(x.k)+' ('+f1(x.v)+')'}).join("; ")+'.</div>';
+ return h;
+}
+
+function commentHTML(s,st){
+ var e=EV(st,ps), txt=commentFor(s,st,ps);
+ if(!txt) return '<div class="empty">Chưa có đánh giá cho '+PER[ps].k+'.<br>Chấm các chỉ báo ở tab Phiếu đánh giá, nhận xét chung sẽ được soạn tự động.</div>';
+ var edited=e.cmtEdit!=null;
+ return '<div class="callout">Nhận xét được soạn từ các chỉ báo đã chấm và các chủ đề đã học trong kế hoạch dạy học. Bạn có thể sửa trực tiếp trong khung dưới đây. Nội dung đã sửa sẽ được dùng khi xuất file.</div>'+
+  (edited?'<div><span class="pill warn">Đã chỉnh tay, không tự cập nhật theo đánh giá</span></div>':'')+
+  '<label class="f">Nhận xét chung · '+PER[ps].k+'<textarea id="cmt" class="cmt" data-field="cmtEdit"'+(RO?" readonly":"")+'>'+esc(txt)+'</textarea></label>'+
+  '<div class="bar" style="justify-content:flex-start"><button class="btn primary" type="button" data-act="copyc">Sao chép</button>'+
+  (DL?'<button class="btn" type="button" data-act="dltxt">Tải file .txt</button>':'')+
+  '<button class="btn" type="button" data-act="regen"'+(RO?" disabled":"")+'>Soạn lại từ đánh giá</button></div>'+
+  (DL?'':'<div class="fine">Chế độ xem này chưa cho tải file, hãy dùng Sao chép.</div>');
+}
+
+function topbot(st,p){
+ var a=DIMS.map(function(k,d){return {n:k.n,v:val(st,p,d)}}).filter(function(x){return x.v!=null}).sort(function(x,y){return y.v-x.v});
+ return a.length?{top:a.slice(0,2),low:a.slice(-2).reverse()}:null;
+}
+function handoffHTML(s,st){
+ ensureNames(st.log.map(function(l){return l.u}));
+ var h='<div class="years">';
+ [2,1].forEach(function(yi){
+  var g=s.g-(2-yi); if(g<1) return;
+  var ps2=YP[yi].filter(function(p){return st.ev[p]&&filled(st.ev[p])>0}), last=ps2.length?ps2[ps2.length-1]:null;
+  h+='<div class="yr"><div><div class="y">'+YN[yi]+'</div><div class="fine">Lớp '+g+(yi===2?' · đang học':'')+'</div></div><div class="body">';
+  var tb=last!=null?topbot(st,last):null;
+  if(tb){
+   h+='<div class="fine">Tính từ kì gần nhất có dữ liệu: '+PER[last].k+'</div>';
+   h+='<div class="tags"><span class="mono">Nổi trội</span>'+tb.top.map(function(x){return '<span class="pill ok">'+esc(x.n)+' '+f1(x.v)+'</span>'}).join("")+'</div>';
+   h+='<div class="tags"><span class="mono">Cần phát triển</span>'+tb.low.map(function(x){return '<span class="pill warn">'+esc(x.n)+' '+f1(x.v)+'</span>'}).join("")+'</div>';
+   var ev=st.ev[last]; if(ev&&ev.comment) h+='<div class="fine" style="border-left:3px solid var(--line);padding-left:12px;color:var(--ink);font-size:14px">Ghi chú: '+esc(ev.comment)+'</div>';
+  } else h+='<div class="fine">Chưa có dữ liệu đánh giá.</div>';
+  h+='</div></div>';
+ });
+ h+='</div>';
+ var nl=nextLabel(s.g);
+ h+='<div class="two"><label class="f">Lời nhắn bàn giao cho giáo viên '+nl+'<textarea data-field="handoff"'+(RO?" readonly":"")+' placeholder="Điều giáo viên năm sau nên biết, cách hỗ trợ đã hiệu quả, việc cần theo dõi.">'+esc(st.handoff)+'</textarea></label>'+
+  '<div style="display:flex;flex-direction:column;gap:10px"><label class="chk" style="font-size:13.5px"><input type="checkbox" data-act="consent"'+(st.consent?" checked":"")+(RO?" disabled":"")+'> Phụ huynh đã đồng ý lưu trữ và chia sẻ hồ sơ trong nhà trường</label>'+
+  '<div class="fine">Giáo viên năm sau chỉ xem được hồ sơ khi hồ sơ được chuyển lên '+nl+' và có đồng ý của phụ huynh.</div>'+
+  '<div>'+(st.handoffMade?'<span class="pill ok">Đã tạo hồ sơ bàn giao lên '+nl+'</span>':'<button class="btn primary" type="button" data-act="handoff"'+(st.consent&&!RO?"":" disabled")+'>Tạo hồ sơ bàn giao lên '+nl+'</button>')+'</div></div></div>';
+ h+='<div><div class="mono" style="margin-bottom:8px">Nhật ký chỉnh sửa</div>'+(st.log.length?'<ul class="log">'+st.log.map(function(l){return '<li><time>'+l.t+'</time><span>'+esc(l.x)+(l.u&&NAMES[l.u]?' · '+esc(NAMES[l.u]):'')+'</span></li>'}).join("")+'</ul>':'<div class="fine">Chưa có thay đổi nào.</div>')+'</div>';
+ return h;
+}
+
+/* ---------- Xuất file ---------- */
+var HEAD=["STT","Họ và tên","Lớp","Tình trạng đánh giá"].concat(DIMS.map(function(d){return "TB "+d.n})).concat(["Nhận xét chung","Ghi chú của giáo viên","Mục tiêu hỗ trợ kì sau"]);
+function rowFor(s,i){
+ var st=S(s.key), e=st.ev[ps];
+ if(!allowed(s.g,ps)) return [i+1,s.name,s.lop,"Không áp dụng"].concat(DIMS.map(function(){return ""}),["","",""]);
+ var n=e?filledV(s,ps,e):0, tot=totalV(s,ps);
+ var status=(!e||n===0)?"Chưa đánh giá":e.locked?"Đã chốt":"Đang đánh giá ("+n+"/"+tot+")";
+ var dm=DIMS.map(function(_,d){var v=e?mean(e.ratings[d]):null;return v==null?"":Math.round(v*10)/10});
+ return [i+1,s.name,s.lop,status].concat(dm,[commentFor(s,st,ps),e?e.comment:"",e?e.goal:""]);
+}
+function sheetFor(lop){
+ var rows=ST.filter(function(s){return s.lop===lop}).map(function(s,i){return rowFor(s,i)});
+ return {name:lop,rows:[HEAD].concat(rows)};
+}
+function csvOf(rows){return "﻿"+rows.map(function(r){return r.map(function(c){var t=String(c==null?"":c);return /[",\n\r]/.test(t)?'"'+t.replace(/"/g,'""')+'"':t}).join(",")}).join("\r\n")}
+function buildXlsx(sheets){
+ var wb=XLSX.utils.book_new(), used={};
+ sheets.forEach(function(sh){
+  var ws=XLSX.utils.aoa_to_sheet(sh.rows);
+  ws["!cols"]=[{wch:5},{wch:26},{wch:12},{wch:20}].concat(DIMS.map(function(){return {wch:12}}),[{wch:100},{wch:40},{wch:40}]);
+  var nm=sh.name.replace(/[\\\/\?\*\[\]:]/g,"-").slice(0,31); if(used[nm]) nm=nm.slice(0,28)+"-"+Object.keys(used).length; used[nm]=1;
+  XLSX.utils.book_append_sheet(wb,ws,nm);
+ });
+ return XLSX.write(wb,{bookType:"xlsx",type:"array"});
+}
+function saveFile(filename,data){
+ if(!DL){toast("Chế độ xem này chưa cho tải file. Hãy dùng nút Sao chép.");return}
+ DL.save({filename:filename,data:data}).then(function(){toast("Đã lưu file")},function(err){
+  var c=err&&err.code;
+  toast(c==="declined"?"Đã hủy tải file":c==="rate_limited"?"Đang có yêu cầu khác, thử lại sau vài giây":"Không tải được file ở chế độ xem này");
+ });
+}
+function exportSheets(sheets,base){
+ var tag=base+"_"+slug(PER[ps].s[0]+" "+PER[ps].s[1]);
+ if(window.XLSX){try{saveFile(tag+".xlsx",buildXlsx(sheets));return}catch(e){}}
+ var rows=[];sheets.forEach(function(sh,i){rows=rows.concat(i?sh.rows.slice(1):sh.rows)});
+ saveFile(tag+".csv",csvOf(rows));
+}
+function copyText(t,fallbackEl){
+ function fb(){if(fallbackEl){fallbackEl.focus();fallbackEl.select();toast("Đã chọn văn bản, nhấn Ctrl+C để sao chép")}else toast("Không sao chép được")}
+ try{navigator.clipboard.writeText(t).then(function(){toast("Đã sao chép")},fb)}catch(e){fb()}
+}
+
+function toast(m){var d=document.createElement("div");d.textContent=m;d.setAttribute("role","status");
+ d.style.cssText="position:fixed;left:50%;transform:translateX(-50%);bottom:calc(20px + env(safe-area-inset-bottom,0px));background:var(--ink);color:var(--bg);padding:8px 16px;border-radius:4px;font-size:13px;z-index:20;max-width:90vw;text-align:center";
+ document.body.appendChild(d);setTimeout(function(){d.remove()},2400)}
+function render(){renderSide();renderMain()}
+
+document.addEventListener("click",function(e){
+ var b=e.target.closest("[data-act]"); if(!b||b.disabled||b.tagName==="SELECT"||b.tagName==="INPUT") return;
+ var a=b.getAttribute("data-act");
+ if(a==="khoi"){selG=+b.dataset.g;selLop=BYK[selG][0];qtext="";document.getElementById("q").value="";selKey=firstOf(selLop).key;picked=null;if(!allowed(selG,ps))ps=2;render();return}
+ if(a==="lop"){selLop=b.getAttribute("data-lop");qtext="";document.getElementById("q").value="";selKey=firstOf(selLop).key;picked=null;render();return}
+ if(a==="pick"){var o=MAP[b.getAttribute("data-key")];selKey=o.key;selG=o.g;selLop=o.lop;picked=null;if(!allowed(o.g,ps))ps=2;render();return}
+ if(a==="tab"){tab=b.getAttribute("data-tab");renderMain();return}
+ if(a==="rate"){if(RO)return;var e1=W();if(e1.locked)return;var d=+b.dataset.s,i=+b.dataset.i,v=+b.dataset.v;e1.ratings[d][i]=e1.ratings[d][i]===v?null:v;save();render();return}
+ if(a==="draft"){var e2=W();logit("Lưu nháp "+PER[ps].k+" ("+filledV(MAP[selKey],ps,e2)+"/"+totalV(MAP[selKey],ps)+" chỉ báo)");save();toast("Đã lưu nháp");renderMain();return}
+ if(a==="lock"){W().locked=true;logit("Chốt kết quả "+PER[ps].k);save();render();return}
+ if(a==="unlock"){W().locked=false;logit("Mở khóa kết quả "+PER[ps].k+" để chỉnh sửa");save();render();return}
+ if(a==="handoff"){var st=S(selKey,true);st.handoffMade=true;logit("Tạo hồ sơ bàn giao lên "+nextLabel(MAP[selKey].g));save();renderMain();return}
+ if(a==="copyc"){var ta=document.getElementById("cmt");copyText(ta.value,ta);return}
+ if(a==="regen"){delete W().cmtEdit;save();renderMain();return}
+ if(a==="dltxt"){var s0=MAP[selKey],ta2=document.getElementById("cmt");
+  var t="Họ và tên: "+s0.name+"\r\nLớp: "+s0.lop+"\r\nKì đánh giá: "+PER[ps].k+"\r\n\r\nNhận xét chung:\r\n"+ta2.value+"\r\n";
+  saveFile("NhanXet_"+slug(s0.name)+"_"+slug(PER[ps].s[0]+" "+PER[ps].s[1])+".txt",t);return}
+ if(a==="expc"){exportSheets([sheetFor(selLop)],"NhanXet_Lop-"+slug(selLop));return}
+ if(a==="expk"){exportSheets(BYK[selG].map(sheetFor),"NhanXet_Khoi-"+selG);return}
+ if(a==="expa"){exportSheets(Object.keys(DATA).map(sheetFor),"NhanXet_Toan-truong");return}
+ if(a==="copyclass"){var sh=sheetFor(selLop),lines=sh.rows.slice(1).map(function(r){return [r[1],r[2],r[r.length-3]].map(function(x){return String(x).replace(/[\t\r\n]+/g," ")}).join("\t")});
+  copyText(["Họ và tên\tLớp\tNhận xét chung"].concat(lines).join("\n"));return}
+});
+document.addEventListener("change",function(e){
+ var t=e.target, a=t.getAttribute&&t.getAttribute("data-act");
+ if(a==="setper"){ps=+t.value;picked=null;render();return}
+ if(a==="per"){var s=MAP[selKey],st=S(selKey),av=avail(s,st),p=+t.dataset.p;
+  var cur=picked?picked.filter(function(x){return av.indexOf(x)>-1}):[];
+  if(!cur.length){var base=av.indexOf(ps)>-1?ps:av[av.length-1];cur=[base];var bf=av.filter(function(x){return x<base});if(bf.length)cur.push(bf[bf.length-1])}
+  if(t.checked){if(cur.length>=4){t.checked=false;return}cur.push(p)}else{if(cur.length<=1){t.checked=true;return}cur=cur.filter(function(x){return x!==p})}
+  picked=cur;renderMain();return}
+ if(a==="consent"){var st2=S(selKey,true);st2.consent=t.checked;if(!t.checked)st2.handoffMade=false;logit(t.checked?"Ghi nhận phụ huynh đồng ý lưu trữ và chia sẻ":"Ghi nhận phụ huynh rút đồng ý chia sẻ");save();renderMain()}
+});
+document.addEventListener("input",function(e){
+ var t=e.target;
+ if(t.id==="q"){qtext=t.value;renderSide();return}
+ if(t.hasAttribute("data-note")){var e1=W();e1.notes[+t.getAttribute("data-note")]=t.value;save();return}
+ if(t.hasAttribute("data-field")){var f=t.getAttribute("data-field");
+  if(f==="handoff"){S(selKey,true).handoff=t.value}else{W()[f]=t.value}
+  save()}
+});
+document.getElementById("reset").addEventListener("click",function(){
+ var b=this; if(DB) return;
+ if(b.getAttribute("data-sure")!=="1"){b.setAttribute("data-sure","1");b.textContent="Bấm lần nữa để xóa tất cả";setTimeout(function(){b.removeAttribute("data-sure");b.textContent="Xóa các đánh giá đã nhập"},3000);return}
+ b.removeAttribute("data-sure");b.textContent="Xóa các đánh giá đã nhập";
+ store={};try{localStorage.removeItem(KEY)}catch(e){}picked=null;render();
+});
+render();
+setSync("local");
+function initCaps(){
+ if(!(window.claude&&window.claude.use)) return;
+ window.claude.use("downloads").then(function(d){DL=d;renderExp();if(tab==="comment")renderMain()},function(){});
+ window.claude.use("user").then(function(u){
+  USER=u; if(!u) return;
+  u.id().then(function(id){UID=id});
+  u.can("data.write").then(function(c){if(c===false){RO=true;if(DB)setSync("ro");renderMain()}});
+ },function(){});
+ window.claude.use("db").then(function(db){
+  if(!db) return;
+  DB=db; setSync("loading");
+  document.getElementById("note").textContent="Dữ liệu lưu dùng chung cho những người được mời chỉnh sửa trang này, và giữ nguyên khi bạn đổi thiết bị.";
+  document.getElementById("resetw").hidden=true;
+  var timer=setTimeout(function(){if(!synced)setSync("offline")},10000);
+  db.collection("hs").onSnapshot(function(snap){onSnap(snap);if(!snap.metadata.fromCache&&!synced){synced=true;clearTimeout(timer);idle()}},function(err){clearTimeout(timer);setSync(err&&err.code==="revoked"?"ro":"offline")});
+ },function(){});
+}
+try{initCaps()}catch(e){}
+window.__t={genComment:genComment,S:S,MAP:MAP,store:function(){return store}};
+})();
+</script>
+
+</body></html>
